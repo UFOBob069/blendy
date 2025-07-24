@@ -6,45 +6,43 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "Get Your Free 1-Minute Roof Quote — No Calls Required | 1MinRoofQuote",
-    template: "%s | 1MinRoofQuote"
+    default: "Blendy - AI Chat Assistant",
+    template: "%s | Blendy"
   },
-  description: "Get an instant, AI-powered roof quote in just 60 seconds. No phone calls required. Connect with trusted local roofers and get your free estimate today.",
+  description: "Blendy is your intelligent AI chat assistant. Have natural conversations, get answers, and explore ideas with our advanced AI technology.",
   keywords: [
-    "roof quote",
-    "roofing estimate",
-    "instant roof quote",
-    "AI roof quote",
-    "free roof estimate",
-    "roof replacement cost",
-    "roof repair quote",
-    "local roofers",
-    "roofing calculator",
-    "roof cost estimate"
+    "AI chat",
+    "chatbot",
+    "AI assistant",
+    "conversational AI",
+    "Blendy",
+    "artificial intelligence",
+    "chat interface",
+    "AI conversation"
   ],
-  authors: [{ name: "1MinRoofQuote" }],
-  creator: "1MinRoofQuote",
-  publisher: "1MinRoofQuote",
+  authors: [{ name: "Blendy" }],
+  creator: "Blendy",
+  publisher: "Blendy",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://1minroofquote.com'),
+  metadataBase: new URL('https://blendy.ai'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Get Your Free 1-Minute Roof Quote — No Calls Required',
-    description: 'Get an instant, AI-powered roof quote in just 60 seconds. No phone calls required. Connect with trusted local roofers and get your free estimate today.',
-    url: 'https://1minroofquote.com',
-    siteName: '1MinRoofQuote',
+    title: 'Blendy - AI Chat Assistant',
+    description: 'Blendy is your intelligent AI chat assistant. Have natural conversations, get answers, and explore ideas with our advanced AI technology.',
+    url: 'https://blendy.ai',
+    siteName: 'Blendy',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: '1MinRoofQuote - Instant AI-Powered Roof Quotes',
+        alt: 'Blendy - AI Chat Assistant',
       }
     ],
     locale: 'en_US',
@@ -52,11 +50,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Get Your Free 1-Minute Roof Quote — No Calls Required',
-    description: 'Get an instant, AI-powered roof quote in just 60 seconds. No phone calls required. Connect with trusted local roofers.',
+    title: 'Blendy - AI Chat Assistant',
+    description: 'Blendy is your intelligent AI chat assistant. Have natural conversations, get answers, and explore ideas.',
     images: ['/twitter-image.jpg'],
-    creator: '@1MinRoofQuote',
-    site: '@1MinRoofQuote',
+    creator: '@blendy_ai',
+    site: '@blendy_ai',
   },
   robots: {
     index: true,

@@ -12,6 +12,11 @@
 @layer base {
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  }
+  
+  * {
+    scroll-behavior: smooth;
   }
 }
 
@@ -97,6 +102,66 @@ input[type="range"]:focus::-webkit-slider-thumb {
 
 input[type="range"]:focus::-moz-range-thumb {
   box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.2);
+}
+
+/* Chat message prose styles */
+.prose {
+  @apply text-gray-900;
+}
+
+.prose p {
+  @apply mb-2 last:mb-0;
+}
+
+.prose code {
+  @apply bg-gray-100 text-gray-800 px-1 py-0.5 rounded text-xs md:text-sm font-mono;
+}
+
+.prose pre {
+  @apply bg-gray-100 text-gray-800 p-2 rounded text-xs md:text-sm overflow-x-auto font-mono;
+}
+
+.prose ul {
+  @apply list-disc list-inside mb-2;
+}
+
+.prose ol {
+  @apply list-decimal list-inside mb-2;
+}
+
+.prose li {
+  @apply mb-1;
+}
+
+.prose strong {
+  @apply font-semibold;
+}
+
+.prose em {
+  @apply italic;
+}
+
+/* Smooth transitions */
+.transition-all {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Custom scrollbar for chat */
+.chat-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-scrollbar::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+
+.chat-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
 }
 
 

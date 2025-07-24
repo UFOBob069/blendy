@@ -1,19 +1,12 @@
-import { HeroSection } from './components/HeroSection'
-import { Benefits } from './components/Benefits'
-import { QuoteForm } from './components/QuoteForm'
-import { Testimonials } from './components/Testimonials'
-import { FAQ } from './components/FAQ'
-import { Footer } from './components/Footer'
+'use client'
+
+import { useState } from 'react'
+import { ChatInterface } from './components/ChatInterface'
 
 export default function Home() {
   return (
-    <main className="min-h-full">
-      <HeroSection />
-      <Benefits />
-      <Testimonials />
-      <QuoteForm />
-      <FAQ />
-      <Footer />
+    <main className="h-screen bg-gray-50">
+      <ChatInterface />
     </main>
   )
 }
