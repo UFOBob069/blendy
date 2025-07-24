@@ -58,6 +58,14 @@ export function ChatWindow({
       if (!res.ok) throw new Error('Failed to get response from Blendy.')
       const data = await res.json()
       onSendMessage(data.reply, 'assistant')
+      // Log chat to Airtable
+      fetch('/api/log-chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userMessage, aiReply: data.reply })
+      }).catch((err) => {
+        console.error('Failed to log chat to Airtable:', err)
+      })
     } catch (err: any) {
       setError('Sorry, there was a problem getting a response from Blendy.')
       onSendMessage('Sorry, there was a problem getting a response from Blendy.', 'assistant')
