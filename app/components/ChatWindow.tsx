@@ -27,6 +27,7 @@ export function ChatWindow({
   const [inputValue, setInputValue] = useState('')
   const [isTyping, setIsTyping] = useState(false)
   const [showMobileSidebar, setShowMobileSidebar] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLTextAreaElement>(null)
 
@@ -40,7 +41,7 @@ export function ChatWindow({
 
   const handleSendMessage = async () => {
     if (!inputValue.trim() || !chat) return
-
+    setError(null)
     const userMessage = inputValue.trim()
     setInputValue('')
     setIsTyping(true)
@@ -48,12 +49,21 @@ export function ChatWindow({
     // Add user message
     onSendMessage(userMessage, 'user')
 
-    // Simulate AI response (replace with actual API call)
-    setTimeout(() => {
-      const aiResponse = `I understand you said: "${userMessage}". This is a simulated response from Blendy. In a real implementation, this would be replaced with an actual AI API call.`
-      onSendMessage(aiResponse, 'assistant')
+    try {
+      const res = await fetch('/api/blendy-chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userMessage })
+      })
+      if (!res.ok) throw new Error('Failed to get response from Blendy.')
+      const data = await res.json()
+      onSendMessage(data.reply, 'assistant')
+    } catch (err: any) {
+      setError('Sorry, there was a problem getting a response from Blendy.')
+      onSendMessage('Sorry, there was a problem getting a response from Blendy.', 'assistant')
+    } finally {
       setIsTyping(false)
-    }, 1000)
+    }
   }
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -198,7 +208,9 @@ export function ChatWindow({
             </div>
           </div>
         )}
-        
+        {error && (
+          <div className="text-red-500 text-sm mt-2">{error}</div>
+        )}
         <div ref={messagesEndRef} />
       </div>
 
@@ -215,6 +227,7 @@ export function ChatWindow({
               className="w-full resize-none border border-gray-300 rounded-2xl px-3 md:px-4 py-2 md:py-3 pr-10 md:pr-12 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent max-h-32 text-sm md:text-base"
               rows={1}
               style={{ minHeight: '40px' }}
+              disabled={isTyping}
             />
           </div>
           <button
